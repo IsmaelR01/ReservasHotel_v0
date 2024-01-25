@@ -1,7 +1,10 @@
 package org.iesalandalus.programacion.reservashotel.dominio;
 
 public enum TipoHabitacion {
-    SUITE("Suite",4) , SIMPLE("Simple",1) , DOBLE("Doble",2) , TRIPLE("Triple",3);
+    SUITE("Suite",4) ,
+    SIMPLE("Simple",1) ,
+    DOBLE("Doble",2) ,
+    TRIPLE("Triple",3);
 
     private String cadenaAMostrar;
     private int numeroMaximoPersonas;
@@ -16,6 +19,6 @@ public enum TipoHabitacion {
 
     @Override
     public String toString() {
-        return cadenaAMostrar;
+        return (ordinal() + 1) + ".- " + cadenaAMostrar;
     }
 }

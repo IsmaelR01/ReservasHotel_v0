@@ -38,7 +38,7 @@ public class Habitacion {
         setPrecio(habitacion.getPrecio());
         setTipoHabitacion(habitacion.getTipoHabitacion());
         setIdentificador(habitacion.getIdentificador());
-        habitacion = new Habitacion(planta,puerta, (int) precio,tipoHabitacion);
+        habitacion = new Habitacion(planta,puerta,precio,tipoHabitacion);
     }
 
 
@@ -113,18 +113,5 @@ public class Habitacion {
     public String toString() {
         return String.format("identificador=%s (%d-%d), precio habitación=%s, tipo habitación=%s",identificador,planta,puerta,precio,tipoHabitacion);
     }
-
-    public static void main(String[] args) {
-        try {
-
-            Habitacion habitacion = new Habitacion(1,0,50,TipoHabitacion.DOBLE);
-            System.out.println(habitacion.toString());
-            System.out.println(habitacion.toString());
-        }catch(NullPointerException | IllegalArgumentException e) {
-            System.out.println("hola" + e.getMessage());
-        }
-
-    }
-
 
 }

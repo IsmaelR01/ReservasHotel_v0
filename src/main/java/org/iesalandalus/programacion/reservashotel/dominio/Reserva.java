@@ -156,7 +156,7 @@ public class Reserva {
     }
 
     private void setPrecio() {
-       int numdias = (fechaFinReserva.getDayOfMonth() - fechaInicioReserva.getDayOfMonth());
+       int numdias = (int) (fechaFinReserva.toEpochDay() - fechaInicioReserva.toEpochDay());
         this.precio = (habitacion.getPrecio() + regimen.getIncrementoPrecio()) * (numeroPersonas * numdias);
     }
 
@@ -212,17 +212,7 @@ public class Reserva {
         if(getCheckOut()!= null) {
             cadCheckout = getCheckOut().format(DateTimeFormatter.ofPattern(FORMATO_FECHA_HORA_RESERVA));
         }
-        return String.format("Huesped: %s %s Habitación:%s - %s Fecha Inicio Reserva: %s Fecha Fin Reserva: %s Checkin: %s Checkout: %s Precio: %,.2f Personas: %s",huesped.getNombre(),huesped.getDni(),habitacion.getIdentificador(),habitacion.getTipoHabitacion(),fechaInicioReserva.format(DateTimeFormatter.ofPattern(FORMATO_FECHA_RESERVA)),fechaFinReserva.format(DateTimeFormatter.ofPattern(FORMATO_FECHA_RESERVA)),cadCheckin,cadCheckout,precio,numeroPersonas);
+        return String.format("Huesped: %s %s Habitación:%s - %s Fecha Inicio Reserva: %s Fecha Fin Reserva: %s Checkin: %s Checkout: %s Precio: %.2f Personas: %s",huesped.getNombre(),huesped.getDni(),habitacion.getIdentificador(),habitacion.getTipoHabitacion(),fechaInicioReserva.format(DateTimeFormatter.ofPattern(FORMATO_FECHA_RESERVA)),fechaFinReserva.format(DateTimeFormatter.ofPattern(FORMATO_FECHA_RESERVA)),cadCheckin,cadCheckout,precio,numeroPersonas);
     }
 
-    public static void main(String[] args) {
-
-        Huesped huesped1 = new Huesped("PEPE BOTELLA CALVO","77649827X","pepe.calvo@gmail.com","654321123",LocalDate.of(2001,5,2));
-        Habitacion habitacion1 = new Habitacion(1,12,50,TipoHabitacion.DOBLE);
-        Reserva reserva = new Reserva(huesped1,habitacion1,Regimen.ALOJAMIENTO_DESAYUNO,LocalDate.of(2024,1,9),LocalDate.of(2024,1,11),2);
-        System.out.println(reserva.getPrecio());
-
-    }
-
-
-    }
+}

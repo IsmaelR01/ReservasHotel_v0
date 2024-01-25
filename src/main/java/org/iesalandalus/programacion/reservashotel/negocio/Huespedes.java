@@ -116,24 +116,4 @@ public class Huespedes {
         tamano--;
     }
 
-    public static void main(String[] args) {
-        try {
-            Huesped huesped1 = new Huesped("José Ramón Jiménez Reyes", "11223344B", "joseramon.jimenez@iesalandalus.org", "950112233", LocalDate.of(2001, 5, 23));
-            Huesped huesped2 = new Huesped("pEPe", "77649827X", "ismaelr46@gmail.com", "625555678", LocalDate.of(1998, 5, 23));
-
-            Huesped huesped3 = new Huesped("Andrés Rubio Del Río", "22334455Y", "andres.rubio@iesalandalus.org", "666223344", LocalDate.of(1992, 7, 3));
-
-
-            Huespedes huespedes = new Huespedes(3);
-            huespedes.insertar(huesped1);
-            huespedes.insertar(huesped2);
-            huespedes.insertar(huesped3);
-            huespedes.borrar(huesped1);
-            System.out.println(Arrays.toString(huespedes.get()));
-
-        } catch (NullPointerException | IllegalArgumentException | OperationNotSupportedException e) {
-            System.out.println(e.getMessage());
-        }
-
-    }
 }

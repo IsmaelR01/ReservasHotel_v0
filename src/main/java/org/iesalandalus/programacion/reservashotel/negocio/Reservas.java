@@ -162,53 +162,20 @@ public class Reservas {
             throw new NullPointerException("ERROR: No se pueden buscar reservas de una habitación nula.");
         }
         //tengo que saber cuantas reservas tiene una habitación
-        int coincidencias = 0;
+        int contador = 0;
         for(int i = 0; i< tamano; i++) {
             if(coleccionReservas[i].getHabitacion().equals(habitacion)) {
-                coincidencias++;
+                contador++;
             }
         }
-        Reserva[] reservasFuturas = new Reserva[coincidencias];
-        int contador = 0;
+        Reserva[] reservasFuturas = new Reserva[contador];
+        contador = 0;
         for(int i = 0; i< tamano; i++) {
             if(coleccionReservas[i].getHabitacion().equals(habitacion)) {
                 reservasFuturas[contador++] = coleccionReservas[i];
             }
         }
         return reservasFuturas;
-    }
-
-    public static void main(String[] args) {
-        try{
-            Huesped huesped1=new Huesped("11111daniel lopez perez","75720662Q","l@gmail.com","626626626", LocalDate.of(1987,12,12));
-            Huesped huesped2=new Huesped("22222paco clavero golvan","11223344B","l@gmail.com","626626626",LocalDate.of(1987,12,12));
-            Huesped huesped3=new Huesped("33333david martinez soria","22334455Y","l@gmail.com","626626626",LocalDate.of(1987,12,12));
-
-            Habitacion habitacion1=new Habitacion(2,1,40, TipoHabitacion.SIMPLE);
-            Habitacion habitacion2=new Habitacion(2,2,45, TipoHabitacion.DOBLE);
-            Habitacion habitacion3=new Habitacion(2,3,55, TipoHabitacion.TRIPLE);
-            Habitacion habitacion4=new Habitacion(1,1,45, TipoHabitacion.SIMPLE);
-            Habitacion habitacion5=new Habitacion(1,2,40, TipoHabitacion.DOBLE);
-            Habitacion habitacion6=new Habitacion(1,3,50, TipoHabitacion.TRIPLE);
-
-            Reserva reserva1=new Reserva(huesped1,habitacion2, Regimen.MEDIA_PENSION,LocalDate.of(2024,1,26),LocalDate.of(2024,1,28),2 );
-            Reserva reserva2=new Reserva(huesped2,habitacion2, Regimen.MEDIA_PENSION,LocalDate.of(2024,1,22),LocalDate.of(2024,1,25),1 );
-            Reserva reserva3=new Reserva(huesped3,habitacion1, Regimen.MEDIA_PENSION,LocalDate.of(2024,2,2),LocalDate.of(2024,2,3),1 );
-
-            Reservas reservasLista1=new Reservas(5);
-            reservasLista1.insertar(reserva1);
-            reservasLista1.insertar(reserva2);
-            reservasLista1.insertar(reserva3);
-            System.out.println(Arrays.toString(reservasLista1.getReservas(huesped1)));
-
-
-
-
-
-        }catch (NullPointerException   |OperationNotSupportedException| IllegalArgumentException e){
-            System.out.println("-"+e.getMessage());
-
-        }
     }
 
 }

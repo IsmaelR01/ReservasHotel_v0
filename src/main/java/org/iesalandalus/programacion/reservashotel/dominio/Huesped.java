@@ -175,21 +175,4 @@ public class Huesped {
         return String.format("nombre=%s (%s), DNI=%s, correo=%s, teléfono=%s, fecha nacimiento=%s",nombre,getIniciales(),dni,correo,telefono,fechaNacimiento.format(DateTimeFormatter.ofPattern(FORMATO_FECHA)));
     }
 
-
-    public static void main(String[] args) {
-        /*
-        Huesped huesped = new Huesped("pEPe","12345678A","ismaelr46@gmail.com","+34625555678",LocalDate.of(1998,5,23));
-
-
-         */
-
-        try{
-            Huesped huesped = new Huesped("  ANDRÉS   RuBiO   dEl             río","22334455Y","joseramon.jimenez@iesalandalus.org","950112233",LocalDate.of(2002,9,15));
-            System.out.println(huesped.toString());
-        }catch (NullPointerException | IllegalArgumentException e) {
-            System.out.println("-" + e.getMessage());
-        }
-
-
-    }
 }
