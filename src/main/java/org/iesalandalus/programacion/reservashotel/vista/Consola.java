@@ -5,6 +5,7 @@ import org.iesalandalus.programacion.utilidades.Entrada;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 public class Consola {
     private Consola() {
@@ -72,9 +73,9 @@ public class Consola {
     public static LocalDate leerfecha(String mensaje) {
         String fecha;
         do {
-            System.out.println("Introduce fecha");
+            System.out.println(mensaje);
             fecha = Entrada.cadena();
-            return LocalDate.parse(fecha);
+            return LocalDate.parse(fecha, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         } while (fecha == null);
     }
 
@@ -148,7 +149,9 @@ public class Consola {
     }
 
     public static Reserva leerReserva() {
-        return new Reserva(leerHuesped(), leerHabitacion(), leerRegimen(), leerfecha("Introduce  fecha  inicio reserva"), leerfecha("Introduce la fecha de fin de la reserva"), 2);
+        System.out.println("Introduce el número de personas");
+        int numPersonas = Entrada.entero();
+        return new Reserva(getHuespedPorDni(), leerHabitacionPorIdentificador(), leerRegimen(), leerfecha("Introduce fecha inicio reserva formato (dd/MM/YYYY)"), leerfecha("Introduce la fecha de fin de la reserva formato (dd/MM/YYYY) "),numPersonas);
     }
 }
 

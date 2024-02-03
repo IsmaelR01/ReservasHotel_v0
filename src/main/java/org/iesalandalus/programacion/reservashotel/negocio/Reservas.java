@@ -162,16 +162,29 @@ public class Reservas {
             throw new NullPointerException("ERROR: No se pueden buscar reservas de una habitación nula.");
         }
         //tengo que saber cuantas reservas tiene una habitación
+        /*
         int contador = 0;
         for(int i = 0; i< tamano; i++) {
             if(coleccionReservas[i].getHabitacion().equals(habitacion)) {
                 contador++;
             }
         }
+
+         */
+
+        int contador = 0;
+        for (int i = 0; i < tamano; i++) {
+            if (coleccionReservas[i].getHabitacion().equals(habitacion) &&
+                    coleccionReservas[i].getFechaInicioReserva().isAfter(LocalDate.now())) {
+                contador++;
+            }
+        }
+
         Reserva[] reservasFuturas = new Reserva[contador];
         contador = 0;
-        for(int i = 0; i< tamano; i++) {
-            if(coleccionReservas[i].getHabitacion().equals(habitacion)) {
+        for (int i = 0; i < tamano; i++) {
+            if (coleccionReservas[i].getHabitacion().equals(habitacion) &&
+                    coleccionReservas[i].getFechaInicioReserva().isAfter(LocalDate.now())) {
                 reservasFuturas[contador++] = coleccionReservas[i];
             }
         }

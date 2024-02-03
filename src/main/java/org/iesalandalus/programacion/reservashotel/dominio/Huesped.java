@@ -37,7 +37,6 @@ public class Huesped {
         setCorreo(huesped.getCorreo());
         setTelefono(huesped.getTelefono());
         setFechaNacimiento(huesped.getFechaNacimiento());
-        huesped = new Huesped(nombre,dni,correo,telefono,fechaNacimiento);
     }
     public String getNombre() {
         return nombre;
@@ -50,9 +49,8 @@ public class Huesped {
         if(nombre.isBlank()) {
             throw new IllegalArgumentException("ERROR: El nombre de un huésped no puede estar vacío.");
         }
-        String nombreFormateado = formateaNombre(nombre);
 
-        this.nombre = nombreFormateado;
+        this.nombre = formateaNombre(nombre);
     }
     private String formateaNombre(String nombre) {
 
@@ -131,6 +129,9 @@ public class Huesped {
     private void setFechaNacimiento(LocalDate fechaNacimiento) {
         if(fechaNacimiento == null) {
             throw new NullPointerException("ERROR: La fecha de nacimiento de un huésped no puede ser nula.");
+        }
+        if(fechaNacimiento.isAfter(LocalDate.now())) {
+            throw new IllegalArgumentException("ERROR: La fecha de nacimiento de un huésped no puede ser posterior a hoy.");
         }
         this.fechaNacimiento = fechaNacimiento;
     }

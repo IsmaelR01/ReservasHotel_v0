@@ -10,7 +10,7 @@ public class Reserva {
     public static final int MAX_NUMERO_MESES_RESERVA = 6;
     private static final int MAX_HORAS_POSTERIOR_CHECKOUT = 12;
     public static final String FORMATO_FECHA_RESERVA = "dd/MM/yyyy";
-    public static final String FORMATO_FECHA_HORA_RESERVA = "HH/mm/ss";
+    public static final String FORMATO_FECHA_HORA_RESERVA = "dd/MM/yyyy hh:mm:ss";
     private Huesped huesped;
     private Habitacion habitacion;
     private Regimen regimen;
@@ -20,12 +20,6 @@ public class Reserva {
     private LocalDateTime checkOut;
     private double precio;
     private int numeroPersonas;
-
-    public Reserva(Huesped huesped, Habitacion habitacion) {
-        setHuesped(huesped);
-        setHabitacion(habitacion);
-    }
-
 
     public Reserva(Huesped huesped, Habitacion habitacion, Regimen regimen, LocalDate fechaInicioReserva, LocalDate fechaFinReserva, int numeroPersonas) {
         setHuesped(huesped);
@@ -49,29 +43,28 @@ public class Reserva {
         setFechaFinReserva(reserva.getFechaFinReserva());
         setNumeroPersonas(reserva.getNumeroPersonas());
         setPrecio();
-        reserva = new Reserva(huesped, habitacion, regimen, fechaInicioReserva, fechaFinReserva, numeroPersonas);
     }
 
     public Huesped getHuesped() {
-        return huesped;
+        return new Huesped(huesped);
     }
 
     public void setHuesped(Huesped huesped) {
         if (huesped == null) {
             throw new NullPointerException("ERROR: El huésped de una reserva no puede ser nulo.");
         }
-        this.huesped = huesped;
+        this.huesped = new Huesped(huesped);
     }
 
     public Habitacion getHabitacion() {
-        return habitacion;
+        return new Habitacion(habitacion);
     }
 
     public void setHabitacion(Habitacion habitacion) {
         if (habitacion == null) {
             throw new NullPointerException("ERROR: La habitación de una reserva no puede ser nula.");
         }
-        this.habitacion = habitacion;
+        this.habitacion = new Habitacion(habitacion);
     }
 
     public Regimen getRegimen() {
@@ -116,6 +109,9 @@ public class Reserva {
         }
         if(!fechaFinReserva.isAfter(fechaInicioReserva)) {
             throw new IllegalArgumentException("ERROR: La fecha de fin de la reserva debe ser posterior a la de inicio.");
+        }
+        if(fechaFinReserva.isEqual(fechaInicioReserva)) {
+            throw new IllegalArgumentException("ERROR: La fecha de fin de la reserva no puede ser igual a la fecha de inicio de la reserva.");
         }
         this.fechaFinReserva = fechaFinReserva;
     }

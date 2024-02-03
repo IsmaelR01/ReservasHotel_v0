@@ -1,6 +1,7 @@
 package org.iesalandalus.programacion.reservashotel.negocio;
 
 import org.iesalandalus.programacion.reservashotel.dominio.Habitacion;
+import org.iesalandalus.programacion.reservashotel.dominio.TipoHabitacion;
 
 import javax.naming.OperationNotSupportedException;
 
@@ -28,6 +29,23 @@ public class Habitaciones {
             copiaHabitaciones[i] = new Habitacion(coleccionHabitaciones[i]);
         }
         return copiaHabitaciones;
+    }
+
+    public Habitacion[] get(TipoHabitacion tipoHabitacion) {
+        int contadorTipoHabitacion = 0;
+        for (int i = 0; i < get().length; i++) {
+            if(coleccionHabitaciones[i].getTipoHabitacion().equals(tipoHabitacion)) {
+                contadorTipoHabitacion++;
+            }
+        }
+        Habitacion[] listaTipoHabitacion = new Habitacion[contadorTipoHabitacion];
+        int contador = 0;
+        for(int i = 0;i< get().length; i++) {
+            if(coleccionHabitaciones[i].getTipoHabitacion().equals(tipoHabitacion)) {
+                listaTipoHabitacion[contador++] = coleccionHabitaciones[i];
+            }
+        }
+        return listaTipoHabitacion;
     }
 
     public int getTamano() {

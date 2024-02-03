@@ -20,6 +20,7 @@ public class Habitacion {
         setPuerta(puerta);
         setIdentificador();
         setPrecio(precio);
+        tipoHabitacion = TipoHabitacion.SIMPLE;
     }
     public Habitacion(int planta, int puerta, double precio, TipoHabitacion tipoHabitacion) {
         setPlanta(planta);
@@ -38,7 +39,6 @@ public class Habitacion {
         setPrecio(habitacion.getPrecio());
         setTipoHabitacion(habitacion.getTipoHabitacion());
         setIdentificador(habitacion.getIdentificador());
-        habitacion = new Habitacion(planta,puerta,precio,tipoHabitacion);
     }
 
 
