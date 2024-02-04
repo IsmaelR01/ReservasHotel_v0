@@ -167,6 +167,7 @@ public class MainApp {
             if(consultarDisponibilidad(reserva.getHabitacion().getTipoHabitacion(),reserva.getFechaInicioReserva(),reserva.getFechaFinReserva()) == null) {
                 System.out.println("La habitación no está disponible");
             }else{
+                System.out.println("Hay habitaciones disponibles, se puede insertar la reserva.");
                 reservas.insertar(reserva);
                 System.out.println("Reserva insertada correctamente.");
             }
